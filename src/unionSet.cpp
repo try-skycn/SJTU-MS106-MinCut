@@ -16,9 +16,17 @@ int unionSet::getRoot(int index) {
 	}
 }
 
-unionSet::unionSet(int _size) : size(_size), setCount(_size) {
-	father = new int[size];
-	for (int i = 0; i < size; ++i) {
+unionSet::unionSet() : setCount(0) {
+}
+
+unionSet::unionSet(int _size) {
+	initialize(_size);
+}
+
+void unionSet::initialize(int _size) {
+	setCount = _size;
+	father.resize(_size);
+	for (int i = 0; i < _size; ++i) {
 		father[i] = -1;
 	}
 }
@@ -34,8 +42,13 @@ void unionSet::unionTwoSets(int set1, int set2) {
 	} else {
 		father[root1] = father[root2];
 	}
+	--setCount;
 }
 
 bool unionSet::isSameSet(int set1, int set2) {
 	return getRoot(set1) == getRoot(set2);
+}
+
+int unionSet::countSets() {
+	return setCount;
 }
