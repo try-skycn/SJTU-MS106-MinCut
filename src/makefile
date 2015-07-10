@@ -1,19 +1,28 @@
 CC = c++
 
-main: main.o graph.o unionSet.o random.o
-	$(CC) -o main main.o graph.o unionSet.o random.o
+BDIR = ../bin
+IDIR = ../include
+ODIR = ../obj
 
-random.o: random.cpp random.h
-	c++ -c random.cpp
+CFLAGS = -I$(IDIR)
 
-unionSet.o: unionSet.cpp unionSet.h
-	c++ -c unionSet.cpp
+_OBJ = main.o graph.o unionSet.o random.o
+OBJ = $(patsubst %, $(ODIR)/%, $(_OBJ))
 
-graph.o: graph.cpp graph.h unionSet.h
-	c++ -c graph.cpp
+$(BDIR)/main: $(OBJ)
+	$(CC) -o $@ $^
 
-main.o: graph.h
-	c++ -c main.cpp
+$(ODIR)/main.o: main.cpp $(IDIR)/graph.h
+	$(CC) -c -o $@ $< $(CFLAGS)
+
+$(ODIR)/graph.o: graph.cpp $(IDIR)/graph.h $(IDIR)/random.h
+	$(CC) -c -o $@ $< $(CFLAGS)
+
+$(ODIR)/unionSet.o: unionSet.cpp $(IDIR)/unionSet.h 
+	$(CC) -c -o $@ $< $(CFLAGS)
+
+$(ODIR)/random.o: random.cpp $(IDIR)/random.h
+	$(CC) -c -o $@ $< $(CFLAGS)
 
 clean:
-	rm *.o
+	rm $(ODIR)/*.o

@@ -11,8 +11,6 @@
 #include <iostream>
 #include <climits>
 
-	#include <cstdio>
-
 graph::graph() : size(0) {
 }
 
