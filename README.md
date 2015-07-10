@@ -7,7 +7,7 @@ The program is to calculate the minimum cut of a given graph.
 
 It run with a randomized algprithm which randomly pick one edge every step and merge two ends until there are just two vertices in the graphs then returns the number of remained edges.
 
-It can be proved that the probability for such algorithm to return a RIGHT answer is greater or equal to $\frac{2}{V(V-1)}$.
+It can be proved that the probability for such algorithm to return a RIGHT answer is greater or equal to '2 / ( V * ( V - 1 ) )' where 'V' represent the number of vertices in the graph.
 
 For a higher probability to get a RIGHT answer, we can run the same program many times.
 
