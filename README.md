@@ -25,14 +25,14 @@ The second part contains just one real number between `0.0`(open end) and `1.0`(
 
 # File Structure
 
-Sources files are in the src/ directory.
+Sources files are in the `src/` directory.
 
-Head files are in the include/ directory.
+Head files are in the `include/` directory.
 
-Executable file is in the bin/ directory.
+Executable file is in the `bin/` directory.
 
 # Make
 
-Befor you make, make sure that there is a directory obj/ in your project directory.
+Befor you make, make sure that there is a directory `obj/` in your project directory.
 
-"makefile" is with sources files.
+`makefile` is in the same directory with sources files.
