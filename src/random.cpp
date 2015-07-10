@@ -14,7 +14,7 @@ void init_rand() {
 	srand( (unsigned int) time(0) );
 }
 
-int rand_range(int n) {
+unsigned int rand_range(unsigned int n) {
 	return rand() % n;
 }
 

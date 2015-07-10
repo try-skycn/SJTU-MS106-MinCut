@@ -11,6 +11,8 @@
 #include <iostream>
 #include <climits>
 
+	#include <cstdio>
+
 graph::graph() : size(0) {
 }
 
@@ -34,22 +36,29 @@ unsigned int graph::calcMinCut() {
 		uintPair nowEdge = randEdgeSeq[ index ];
 		vertexStates.unionTwoSets( nowEdge.first, nowEdge.second );
 
-		swap( randEdgeSeq[index], randEdgeSeq[size - 1] );
+		swap( randEdgeSeq[index], randEdgeSeq[edgeSize - 1] );
 		randEdgeSeq.pop_back();
 	}
 
-	return randEdgeSeq.size();
+	unsigned int ans = 0;
+	for(std::vector<uintPair>::iterator it = randEdgeSeq.begin(); it != randEdgeSeq.end(); ++it) {
+		if ( !vertexStates.isSameSet(it->first, it->second) ) {
+			++ans;
+		}
+	}
+
+	return ans;
 }
 
 unsigned int graph::calcMinCut(double error) {
-	const double unitError = 1.0 - 1.0 / ( (double)size * (double)size );
+	const double unitError = 1.0 - 2.0 / ( size * (size - 1) );
 	double totalError = 1.0;
 	unsigned int ans = (unsigned int)ULONG_MAX;
 
 	do {
 		ans = std::min( ans, calcMinCut() );
 		totalError *= unitError;
-	} while (totalError < error);
+	} while (totalError >= error);
 
 	return ans;
 }
