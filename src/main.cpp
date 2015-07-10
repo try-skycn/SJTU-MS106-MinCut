@@ -6,9 +6,12 @@
 */
 
 #include "graph.h"
+#include "random.h"
 #include <cstdio>
 
 int main() {
+
+	init_rand();
 
 	graph G;
 

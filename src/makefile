@@ -12,7 +12,7 @@ OBJ = $(patsubst %, $(ODIR)/%, $(_OBJ))
 $(BDIR)/main: $(OBJ)
 	$(CC) -o $@ $^
 
-$(ODIR)/main.o: main.cpp $(IDIR)/graph.h
+$(ODIR)/main.o: main.cpp $(IDIR)/graph.h $(IDIR)/random.h
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 $(ODIR)/graph.o: graph.cpp $(IDIR)/graph.h $(IDIR)/random.h
