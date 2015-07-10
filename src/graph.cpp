@@ -49,7 +49,7 @@ unsigned int graph::calcMinCut() {
 }
 
 unsigned int graph::calcMinCut(double error) {
-	const double unitError = 1.0 - 2.0 / ( size * (size - 1) );
+	const double unitError = 1.0 - 2.0 / ( edges.size() * (edges.size() - 1) );
 	double totalError = 1.0;
 	unsigned int ans = (unsigned int)ULONG_MAX;
 
